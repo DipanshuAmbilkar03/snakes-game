@@ -1,11 +1,11 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 400;
-canvas.height = 400;
+canvas.width = 500;
+canvas.height = 500;
 
 // Game Variables
 let snake = [{ x: 200, y: 200 }];
-let direction = { x: 1, y: 0 }; // Initial direction
+let direction = { x: 1, y: 0 };
 let food = { x: 100, y: 100 };
 let score = 0;
 let gridSize = 20;
@@ -59,11 +59,15 @@ function checkCollision() {
 
   // Wall collision
   if (
-    head.x < 0 ||
-    head.x >= canvas.width ||
-    head.y < 0 ||
-    head.y >= canvas.height
+    head.x <= -30 ||
+    head.x > canvas.width ||
+    head.y < -30 ||
+    head.y > canvas.height
   ) {
+    console.log(`x ${head.x}`);
+    console.log(`canva x ${canvas.width}`);
+    console.log(`y ${head.y}`);
+    console.log(`canva y ${canvas.height}`);
     resetGame();
   }
 
